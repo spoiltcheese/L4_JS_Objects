@@ -87,7 +87,12 @@ More Hints: The existing starter Pokemon will be *replaced* in your party with t
 
 Solve Exercise 7 here:
 */
-game.party.splice(0, 1, pokemon[game.party[0].number]);
+for (let i = 0; i < game.party.length; i++) {
+  if (game.party[i].starter)
+    game.party.splice(i, 1, pokemon[game.party[i].number]);
+}
+console.log("Evolved!");
+printCurrentParty();
 
 /*
 Exercise 8
@@ -100,8 +105,8 @@ Solve Exercise 8 here:
 function printCurrentParty() {
   console.log("Current party:");
 
-  for (let index in game.party) {
-    console.log(game.party[index].name);
+  for (let member of game.party) {
+    console.log(member.name);
   }
 }
 
@@ -377,4 +382,4 @@ for (let member of pokemon) {
   pokemonByType[member.type].push(member);
 }
 
-console.dir(pokemonByType);
+//console.dir(pokemonByType);
